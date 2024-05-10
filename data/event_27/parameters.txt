@@ -1,0 +1,17 @@
+reduced-thickness  0.007 
+fluctuation  1.6 
+nucleon-width  0.5 
+cross-section  4.23 
+normalization  5.6 
+meanbeta3  0 
+sigmabeta3  0 
+sigmabeta4  0 
+meangamma  0 
+sigmagamma  0 
+meanR  6.0 
+meana  0.4 
+meanbeta2  0.23 
+meanbeta4  0.0 
+sigmaR  0.0 
+sigmaa  0.1 
+sigmabeta2  0.0 
