@@ -93,4 +93,47 @@ def draw_inter(obs_name='c22'):
     s7.on_changed(update)
     plt.show()    
 
-draw_inter('cov_v2sq_pT')
+def draw_inter_ratio(obs_name='c22'):
+    x = [2.5,7.5,15,25,35,45,55]
+    y_0 = read_and_reshape_predict_data(432,[6.5,0.55,0.23,0.06,0.5,0.05,0.04])[0][obs_order[obs_name],:]
+    fig, ax = plt.subplots()  
+    l,=plt.plot(x,y_0/y_0,"or-")  
+    plt.ylim([0.9,1.1])          
+    plt.subplots_adjust(bottom=0.5,left=0.3)
+    axcolor = 'lightgoldenrodyellow'  # slider的颜色
+    meanR = plt.axes([0.15, 0.38, 0.65, 0.04], facecolor=axcolor) 
+    meana = plt.axes([0.15, 0.33, 0.65, 0.04], facecolor=axcolor) 
+    meanbeta2 = plt.axes([0.15, 0.28, 0.65, 0.04], facecolor=axcolor) 
+    meanbeta4 = plt.axes([0.15, 0.23, 0.65, 0.04], facecolor=axcolor) 
+    sigmaR = plt.axes([0.15, 0.18, 0.65, 0.04], facecolor=axcolor) 
+    sigmaa = plt.axes([0.15, 0.13, 0.65, 0.04], facecolor=axcolor) 
+    sigmabeta2 = plt.axes([0.15, 0.08, 0.65, 0.04], facecolor=axcolor)
+    s1 = Slider(meanR, 'meanR', valmin= 6.0 , valmax= 7.0, valinit=6.5)
+    s2 = Slider(meana, 'meana', valmin= 0.4, valmax = 0.7, valinit=0.55)
+    s3 = Slider(meanbeta2, 'meanbeta2', valmin=0.18, valmax=0.28, valinit=0.23)
+    s4 = Slider(meanbeta4, 'meanbeta4', valmin=0.0 , valmax=0.12, valinit=0.06)
+    s5 = Slider(sigmaR, 'deltR', valmin = 0.0 , valmax=1.0, valinit=0.5)
+    s6 = Slider(sigmaa, 'delta', valmin=0.0, valmax=0.1, valinit=0.05)
+    s7 = Slider(sigmabeta2, 'deltbeta2', valmin=0.0, valmax=0.08, valinit=0.04)
+    def update(val):
+        s1_ = s1.val
+        s2_ = s2.val
+        s3_ = s3.val
+        s4_ = s4.val
+        s5_ = s5.val
+        s6_ = s6.val
+        s7_ = s7.val
+        y=read_and_reshape_predict_data(432,[s1_,s2_,s3_,s4_,s5_,s6_,s7_])[0][obs_order[obs_name],:]
+        l.set_ydata(y/y_0)
+    fig.canvas.draw_idle()
+    s1.on_changed(update) 
+    s2.on_changed(update)
+    s3.on_changed(update)
+    s4.on_changed(update)
+    s5.on_changed(update)
+    s6.on_changed(update)
+    s7.on_changed(update)
+    plt.show()    
+
+
+draw_inter_ratio('c22')
