@@ -4,3 +4,5 @@ I use different R0, a0, beta2, beta4, sigmaR0, sigmaa0, sigmabeta2 to create a h
 
 
 Then an linear interpolation are used to show the results at the point between the grid(interpolation.py), you can use this script to view it "python3 ./interpolation.py".
+
+The data only generate in b~0
